@@ -1,0 +1,64 @@
+-- 댓글
+DROP TABLE IF EXISTS MY_SCHEMA.TABLE2 RESTRICT;
+
+-- 글등록
+DROP TABLE IF EXISTS MY_SCHEMA.TABLE RESTRICT;
+
+-- 댓글
+CREATE TABLE MY_SCHEMA.TABLE2 (
+	RE_NO     INTEGER       NOT NULL COMMENT '댓글번호', -- 댓글번호
+	RE_ID     VARCHAR(30)   NULL     COMMENT '댓글아이디', -- 댓글아이디
+	RE_PW     VARCHAR(30)   NULL     COMMENT '댓글비밀번호', -- 댓글비밀번호
+	RE_CO     VARCHAR(5000) NULL     COMMENT '댓글내용', -- 댓글내용
+	RE_LIKE   INTEGER       NULL     COMMENT '댓글좋아요', -- 댓글좋아요
+	RE_UNLIKE INTEGER       NULL     COMMENT '댓글싫어요', -- 댓글싫어요
+	RE_DATE   DATE          NULL     COMMENT '댓글등록일', -- 댓글등록일
+	RE_IP     VARCHAR(30)   NULL     COMMENT '댓글아이피', -- 댓글아이피
+	CO_NO     INTEGER       NULL     COMMENT '글번호' -- 글번호
+)
+COMMENT '댓글';
+
+-- 댓글
+ALTER TABLE MY_SCHEMA.TABLE2
+	ADD CONSTRAINT PK_TABLE2 -- 댓글 기본키
+		PRIMARY KEY (
+			RE_NO -- 댓글번호
+		);
+
+ALTER TABLE MY_SCHEMA.TABLE2
+	MODIFY COLUMN RE_NO INTEGER NOT NULL AUTO_INCREMENT COMMENT '댓글번호';
+
+-- 글등록
+CREATE TABLE MY_SCHEMA.TABLE (
+	CO_NO     INTEGER       NOT NULL COMMENT '글번호', -- 글번호
+	CO_ID     VARCHAR(30)   NULL     COMMENT '글아이디', -- 글아이디
+	CO_PW     VARCHAR(30)   NULL     COMMENT '글비밀번호', -- 글비밀번호
+	CO_CO     VARCHAR(5000) NULL     COMMENT '글내용', -- 글내용
+	CO_IMG    VARCHAR(5000) NULL     COMMENT '이미지URL', -- 이미지URL
+	CO_AVI    VARCHAR(5000) NULL     COMMENT '동영상URL', -- 동영상URL
+	CO_LIKE   INTEGER       NULL     COMMENT '글좋아요', -- 글좋아요
+	CO_UNLIKE INTEGER       NULL     COMMENT '글싫어요', -- 글싫어요
+	CO_DATE   DATE          NULL     COMMENT '글등록일', -- 글등록일
+	CO_IP     VARCHAR(30)   NULL     COMMENT '글아이피' -- 글아이피
+)
+COMMENT '글등록';
+
+-- 글등록
+ALTER TABLE MY_SCHEMA.TABLE
+	ADD CONSTRAINT PK_TABLE -- 글등록 기본키
+		PRIMARY KEY (
+			CO_NO -- 글번호
+		);
+
+ALTER TABLE MY_SCHEMA.TABLE
+	MODIFY COLUMN CO_NO INTEGER NOT NULL AUTO_INCREMENT COMMENT '글번호';
+
+-- 댓글
+ALTER TABLE MY_SCHEMA.TABLE2
+	ADD CONSTRAINT FK_TABLE_TO_TABLE2 -- 글등록 -> 댓글
+		FOREIGN KEY (
+			CO_NO -- 글번호
+		)
+		REFERENCES MY_SCHEMA.TABLE ( -- 글등록
+			CO_NO -- 글번호
+		);
