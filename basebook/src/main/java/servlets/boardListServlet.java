@@ -12,13 +12,13 @@ import javax.servlet.annotation.WebServlet;
 public class boardListServlet extends GenericServlet {
 	private static final long serialVersionUID = 1L;
        
-
-
-	
 	public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException {
 
 	
 	
+		
+		
+		
 	}
 
 }

@@ -10,7 +10,7 @@
 		<param-value>servlets/mybatis-config.xml</param-value>
 	</context-param>
 	
-	
+<!-- 	
 	<servlet>
 		<servlet-name>Hello</servlet-name>
 		<servlet-class>servlets.boardAddServlet</servlet-class>
@@ -20,11 +20,14 @@
 		<servlet-name>Hello</servlet-name>
 		<url-pattern>/add</url-pattern>
 	</servlet-mapping>
-	 
+	  -->
 	
-	<!-- <listener>
+	<listener>
 	  <listener-class>servlets.ContextLoaderListener</listener-class>
-	</listener> -->
+	</listener> 
+	
+	
+	
  <!--  <display-name>Oh Ho Ra web</display-name>
   
   다음 파라미터 값은 ServletContext의 getInitParameter()를 
