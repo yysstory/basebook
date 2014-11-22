@@ -1,6 +1,7 @@
 
 
 import java.io.IOException;
+
 import javax.servlet.GenericServlet;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
@@ -14,7 +15,7 @@ public class boardAddServlet extends GenericServlet {
 
 
 	
-	public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException {
+	public void service(ServletRequest request, ServletResponse response)  {
 
 		System.out.println("add");
 		

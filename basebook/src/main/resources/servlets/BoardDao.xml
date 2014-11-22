@@ -27,7 +27,7 @@
  
   
   <insert id="insert" parameterType="Board">
-    INSERT INTO PRODUCTS(CO_ID,CO_PW,CO_CO) 
+    INSERT INTO CONTENT(CO_ID,CO_PW,CO_CO) 
     VALUES (#{contentId}, #{contentPassword}, #{contentContent})
   </insert>
   

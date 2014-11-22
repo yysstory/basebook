@@ -11,15 +11,27 @@
 	</context-param>
 	
 	
+	<servlet>
+		<servlet-name>Hello</servlet-name>
+		<servlet-class>servlets.boardAddServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>Hello</servlet-name>
+		<url-pattern>/add</url-pattern>
+	</servlet-mapping>
+	
+	
+	<!-- <listener>
+	  <listener-class>servlets.ContextLoaderListener</listener-class>
+	</listener> -->
  <!--  <display-name>Oh Ho Ra web</display-name>
   
   다음 파라미터 값은 ServletContext의 getInitParameter()를 
        호출하면 얻을 수 있다.
 
 	리스너 등록하기
-	<listener>
-	  <listener-class>java63.servlets.test04.ContextLoaderListener</listener-class>
-	</listener>
+
 
   필터 선언
   <filter>
