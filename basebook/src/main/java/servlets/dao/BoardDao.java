@@ -1,5 +1,7 @@
 package servlets.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,33 @@ public class BoardDao {
 		      sqlSession.insert(
 		        "servlets.BoardDao.insert", board);
 		      sqlSession.commit();
+		    } finally {
+		      sqlSession.close();
+		    }
+		  }
+	  
+	  
+	  public void delete(int no) {
+		    SqlSession sqlSession = sqlSessionFactory.openSession();
+		    try {
+		      sqlSession.delete(
+		        "servlets.BoardDao.delete", no);
+		      sqlSession.commit();
+		    } finally {
+		      sqlSession.close();
+		    }
+		  }
+	  
+	  
+	  public List<Board> selectList() {
+		    SqlSession sqlSession = sqlSessionFactory.openSession();
+		    
+		  /*  HashMap<String,Object> paramMap = new HashMap<>();
+		    paramMap.put("startIndex", ((pageNo - 1) * pageSize));
+		    paramMap.put("pageSize", pageSize);
+		    */
+		    try {
+		      return sqlSession.selectList("servlets.BoardDao.selectList");
 		    } finally {
 		      sqlSession.close();
 		    }
@@ -68,33 +97,9 @@ public class ProductDao {
     }
   }
   
-  public void delete(int no) {
-    SqlSession sqlSession = sqlSessionFactory.openSession();
-    try {
-      sqlSession.delete(
-        "java02.test19.server.ProductDao.delete", no);
-      sqlSession.commit();
-    } finally {
-      sqlSession.close();
-    }
-  }
   
-  public List<Product> selectList(int pageNo, int pageSize) {
-    SqlSession sqlSession = sqlSessionFactory.openSession();
-    
-    HashMap<String,Object> paramMap = new HashMap<>();
-    paramMap.put("startIndex", ((pageNo - 1) * pageSize));
-    paramMap.put("pageSize", pageSize);
-    
-    try {
-      return sqlSession.selectList(
-        // 네임스페이스 + SQL문 아이디
-        "java02.test19.server.ProductDao.selectList", 
-        paramMap  SQL문을 실행할 때 필요한 값 전달 );
-    } finally {
-      sqlSession.close();
-    }
-  }
+  
+
   
   public void insert(Product product) {
     SqlSession sqlSession = sqlSessionFactory.openSession();

@@ -3,6 +3,8 @@ package servlets;
 
 import java.io.IOException;
 
+import javafx.collections.SetChangeListener;
+
 import javax.servlet.GenericServlet;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
@@ -24,11 +26,11 @@ public class boardAddServlet extends GenericServlet {
 		System.out.println("boardAddServlet서블릿 호출");
 		
 		Board board = new Board();
-		
+		request.setCharacterEncoding("UTF-8");
 		board.setContentId(request.getParameter("id"));
 		board.setContentPassword(request.getParameter("password"));
 		board.setContentContent(request.getParameter("content"));
-		board.setContentAvi("url");
+		board.setContentAvi(request.getParameter("url"));
 		
 		BoardDao boardDao = (BoardDao) this.getServletContext().getAttribute("boardDao");
 		

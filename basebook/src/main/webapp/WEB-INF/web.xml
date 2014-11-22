@@ -9,7 +9,12 @@
 		<param-name>mybatisConfig</param-name>
 		<param-value>servlets/mybatis-config.xml</param-value>
 	</context-param>
+
+	<listener>
+	  <listener-class>servlets.ContextLoaderListener</listener-class>
+	</listener> 
 	
+		
 <!-- 	
 	<servlet>
 		<servlet-name>Hello</servlet-name>
@@ -21,11 +26,6 @@
 		<url-pattern>/add</url-pattern>
 	</servlet-mapping>
 	  -->
-	
-	<listener>
-	  <listener-class>servlets.ContextLoaderListener</listener-class>
-	</listener> 
-	
 	
 	
  <!--  <display-name>Oh Ho Ra web</display-name>

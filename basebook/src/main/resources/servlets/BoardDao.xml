@@ -24,29 +24,33 @@
     <result column="CO_IP" property="ContentIp"/>
   </resultMap>
  
- 
+ <sql id="contentSelect">
+    SELECT CO_NO,CO_ID, CO_PW, CO_CO, CO_IMG, CO_AVI,CO_LIKE,CO_UNLIKE,CO_DATE,CO_IP 
+    FROM CONTENT
+  </sql>
   
   <insert id="insert" parameterType="Board">
-    INSERT INTO content(CO_ID,CO_PW,CO_CO) 
-    VALUES (#{contentId}, #{contentPassword}, #{contentContent})
+    INSERT INTO CONTENT(CO_ID,CO_PW,CO_CO,CO_AVI) 
+    VALUES (#{contentId}, #{contentPassword}, #{contentContent},#{contentAvi})
   </insert>
   
   
+   <delete id="delete" parameterType="int">
+    DELETE FROM CONTENT WHERE CO_ID=#{value}
+  </delete>
   
-<!--   <sql id="productSelect">
-    SELECT PNO, PNAME, QTY, MKNO 
-    FROM PRODUCTS
-  </sql>
- 
- 
   
-  <select id="selectList" parameterType="map" resultMap="productMap">
-    <include refid="productSelect"/>
-    <if test="pageSize > 0">
-      limit #{startIndex}, #{pageSize}
-    </if>
+  <select id="selectList" resultMap="boardMap">
+    <include refid="contentSelect"/>
+
   </select>
  
+  
+<!--   
+ 
+ 
+  
+
  
   
   <select id="selectOne" parameterType="int" resultMap="productMap">
@@ -64,9 +68,7 @@
     WHERE PNO=#{no}
   </update>
   
-  <delete id="delete" parameterType="int">
-    DELETE FROM PRODUCTS WHERE PNO=#{value}
-  </delete> -->
+  -->
 </mapper>
 
 
