@@ -7,21 +7,38 @@
 => 자주 사용되는 SQL문은 별도로 정의해두고 포함한다.
 -->
 
-<mapper namespace="java02.test19.server.ProductDao">
+<mapper namespace="servlets.dao.BoardDao">
 
   <!-- 객체의 컬럼과 프로퍼티를 연결한다. -->
-  <resultMap type="Product" id="productMap">
+  <resultMap type="Board" id="boardMap">
     <!-- PK 컬럼은 id 태그를 사용하여 지정한다. -->
-    <id column="PNO" property="no"/>
-    <result column="PNAME" property="name"/>
-    <result column="QTY" property="quantity"/>
-    <result column="MKNO" property="makerNo"/>
+    <id column="CO_NO" property="contentNo"/>
+    <result column="CO_ID" property="contentId"/>
+    <result column="CO_PW" property="contentPassword"/>
+    <result column="CO_CO" property="contentContent"/>
+    <result column="CO_IMG" property="contentImg"/>
+    <result column="CO_AVI" property="contentAvi"/>
+    <result column="CO_LIKE" property="contentLike"/>
+    <result column="CO_UNLIKE" property="contentUnlike"/>
+    <result column="CO_DATE" property="ContentDate"/>
+    <result column="CO_IP" property="ContentIp"/>
   </resultMap>
+ 
+ 
   
-  <sql id="productSelect">
+  <insert id="insert" parameterType="Board">
+    INSERT INTO PRODUCTS(CO_ID,CO_PW,CO_CO) 
+    VALUES (#{contentId}, #{contentPassword}, #{contentContent})
+  </insert>
+  
+  
+  
+<!--   <sql id="productSelect">
     SELECT PNO, PNAME, QTY, MKNO 
     FROM PRODUCTS
   </sql>
+ 
+ 
   
   <select id="selectList" parameterType="map" resultMap="productMap">
     <include refid="productSelect"/>
@@ -29,16 +46,15 @@
       limit #{startIndex}, #{pageSize}
     </if>
   </select>
+ 
+ 
   
   <select id="selectOne" parameterType="int" resultMap="productMap">
     <include refid="productSelect"/> 
     WHERE PNO=#{value}
   </select>
-  
-  <insert id="insert" parameterType="Product">
-    INSERT INTO PRODUCTS(PNAME,QTY,MKNO) 
-    VALUES (#{name}, #{quantity}, #{makerNo})
-  </insert>
+ 
+ 
   
   <update id="update" parameterType="Product">
     UPDATE PRODUCTS SET 
@@ -50,7 +66,7 @@
   
   <delete id="delete" parameterType="int">
     DELETE FROM PRODUCTS WHERE PNO=#{value}
-  </delete>
+  </delete> -->
 </mapper>
 
 
