@@ -1,11 +1,22 @@
 @CHARSET "UTF-8";
 
-*{
+
+#add_content{
+	position: fixed;
+	z-index : 100;
+	right: 50px;
+	width: 280px;
+}
+
+
+header,footer,section{
 	border: 1px solid black;
 }
 
 .container {
 	position: relative;
+	margin: 0px auto;
+	width: 790px;
 }
 
 header {
@@ -15,21 +26,22 @@ header {
 	height: 70px;
 	background-color: #5b6ce1;
 	width: 100%;
+	z-index: 10;
 	
 }
 
 
-nav {
-	position: absolute;
-	right: 0px;
-	width: 200px;
-	
-}
+
 
 section {
 	/* position is static by default */
-	margin-right: 300px;
-	padding: 5px;
+	position: relative;
+	left : 0px;
+	width : 480px;
+	z-index :1;
+	padding: 0px;
+	
+	
 }
 
 footer {
@@ -39,11 +51,12 @@ footer {
 	height: 70px;
 	background-color: white;
 	width: 100%;
+	z-index: 10;
 }
 
 body {
-	margin-top : 120px;
-	margin-bottom: 120px;
+	margin-top : 72px;
+	margin-bottom: 72px;
 	
 
 }
