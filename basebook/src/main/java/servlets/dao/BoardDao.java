@@ -25,7 +25,7 @@ public class BoardDao {
 		    SqlSession sqlSession = sqlSessionFactory.openSession();
 		    try {
 		      sqlSession.insert(
-		        "servlets.dao.BoardDao.insert", board);
+		        "servlets.BoardDao.insert", board);
 		      sqlSession.commit();
 		    } finally {
 		      sqlSession.close();
