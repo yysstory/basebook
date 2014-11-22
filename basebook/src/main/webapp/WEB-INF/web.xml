@@ -3,21 +3,21 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.1">
-  <display-name>Oh Ho Ra web</display-name>
+ <!--  <display-name>Oh Ho Ra web</display-name>
   
-  <!-- 다음 파라미터 값은 ServletContext의 getInitParameter()를 
-       호출하면 얻을 수 있다. -->
+  다음 파라미터 값은 ServletContext의 getInitParameter()를 
+       호출하면 얻을 수 있다.
 	<context-param>
 		<param-name>mybatisConfig</param-name>
 		<param-value>java63/servlets/test04/dao/mybatis-config.xml</param-value>
 	</context-param>
 	
-	<!-- 리스너 등록하기 -->
+	리스너 등록하기
 	<listener>
 	  <listener-class>java63.servlets.test04.ContextLoaderListener</listener-class>
 	</listener>
 
-  <!-- 필터 선언 -->
+  필터 선언
   <filter>
     <filter-name>CharacterEncodingFilter</filter-name>
     <filter-class>java63.servlets.test04.CharacterEncodingFilter</filter-class>
@@ -31,7 +31,7 @@
     <filter-class>java63.servlets.test04.LogFilter</filter-class>
   </filter>
 
-  <!-- 필터를 실행해야 할 때를 지정 -->
+  필터를 실행해야 할 때를 지정
   <filter-mapping>
     <filter-name>CharacterEncodingFilter</filter-name>
     <url-pattern>*</url-pattern>
@@ -40,7 +40,7 @@
     <filter-name>LogFilter</filter-name>
     <url-pattern>/test04/*</url-pattern>
   </filter-mapping>
-  
+   -->
 
   <!--  
 	<servlet>
