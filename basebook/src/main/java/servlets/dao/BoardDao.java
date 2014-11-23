@@ -61,6 +61,18 @@ public class BoardDao {
 		    }
 		  }
 	 
+
+	  public void update(Board Board) {
+		    SqlSession sqlSession = sqlSessionFactory.openSession();
+		    try {
+		      sqlSession.update(
+		        "servlets.BoardDao.update", Board);
+		      sqlSession.commit();
+		    } finally {
+		      sqlSession.close();
+		    }
+		  }
+
 }
 
 /*@Component
