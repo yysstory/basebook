@@ -85,8 +85,13 @@ public class boardListServlet extends GenericServlet {
 				out.println("<center><img src='"+board.getContentAvi() +"' width='450' ></center>");
 		
 		//만약 무언가 주소가 있다면
+		//http://youtu.be/1WRuSEPKS0I
 			}else{
-				out.println("<center><iframe width='450' height='300' src='//www.youtube.com/embed/"+board.getContentAvi().split("/")[board.getContentAvi().split("/").length-1]+"' frameborder='0' allowfullscreen></iframe></center>");
+				for(int i=0;i<board.getContentAvi().split("/").length;i++){
+					if(board.getContentAvi().split("/")[i].equals("youtu.be")){
+						out.println("<center><iframe width='450' height='300' src='//www.youtube.com/embed/"+board.getContentAvi().split("/")[board.getContentAvi().split("/").length-1]+"' frameborder='0' allowfullscreen></iframe></center>");
+					}
+				}
 			}
 		}
 		//만약 url이 그림파일이라면 
@@ -128,7 +133,7 @@ public class boardListServlet extends GenericServlet {
 		out.println("	<script src='js/jquery-1.11.1.js'></script>");
 		out.println("    <script src='js/bootstrap.min.js'></script>");
 		out.println("    <script src='js/respond.js'></script>");
-
+		out.println("    <script src='js/common.js'></script>");
 		out.println("</body>");
 		out.println("</html>");
 

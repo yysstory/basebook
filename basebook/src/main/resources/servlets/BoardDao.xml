@@ -26,7 +26,7 @@
  
  <sql id="contentSelect">
     SELECT CO_NO,CO_ID, CO_PW, CO_CO, CO_IMG, CO_AVI,CO_LIKE,CO_UNLIKE,CO_DATE,CO_IP 
-    FROM CONTENT
+    FROM CONTENT ORDER BY CO_NO DESC
   </sql>
   
   <insert id="insert" parameterType="Board">
