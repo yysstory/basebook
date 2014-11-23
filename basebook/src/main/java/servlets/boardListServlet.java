@@ -52,6 +52,7 @@ public class boardListServlet extends GenericServlet {
 
 		out.println("	<div id=add_content>");
 
+		
 		out.println("	<form  role='form' action='add' role='form' method='post'>");
 		out.println("		<textarea name=content class=form-control rows='10' cols='35' placeholder='내용을 추가해주세요!'></textarea>");
 		out.println("		<input name=url class=form-control type='text'  placeholder='이미지URL or 유투브 URL'>");
@@ -64,30 +65,33 @@ public class boardListServlet extends GenericServlet {
 
 		out.println("<div class=container>");
 		
-		for (Board board : boardList) {
 		out.println("<section>");
+		
+		for (Board board : boardList) {
+		
+
 
 		out.println("<table>");
 		out.println("<tr><th>");
-		out.println("No."+board.getContentNo()+"  "+board.getContentId()+" 님이 작성 "); //아이디
+		out.println("  No."+board.getContentNo()+"  "+board.getContentId()+" 님이 작성 "); //아이디
 		out.println("<th></tr>");
 
 		out.println("<tr><td>");//동영상  url
 		
-		if(board.getContentAvi()!=null){
+		if(board.getContentAvi()!=""){
 		String []urlSplit = board.getContentAvi().split("\\.");
 		
 			if(urlSplit[urlSplit.length-1].equals("png")||urlSplit[urlSplit.length-1].equals("jpg")||urlSplit[urlSplit.length-1].equals("jpeg")){
-				out.println("<img src='"+board.getContentAvi() +"' width='470' >");
+				out.println("<center><img src='"+board.getContentAvi() +"' width='450' ></center>");
 		
 		//만약 무언가 주소가 있다면
 			}else{
-				out.println("<iframe width='470' height='300' src='//www.youtube.com/embed/"+urlSplit[urlSplit.length].split("/")[urlSplit[urlSplit.length].split("/").length]+"' frameborder='0' allowfullscreen></iframe>");
+				out.println("<center><iframe width='450' height='300' src='//www.youtube.com/embed/"+board.getContentAvi().split("/")[board.getContentAvi().split("/").length-1]+"' frameborder='0' allowfullscreen></iframe></center>");
 			}
 		}
 		//만약 url이 그림파일이라면 
 		
-		
+		  
 		out.println("</td></tr>");
 
 		out.println("<tr><td>");//내용
@@ -96,7 +100,7 @@ public class boardListServlet extends GenericServlet {
 
 		out.println("</td></tr>");
 
-		out.println("<tr><td>");
+		out.println("<tr id='iconCombine'><td>");
 		out.println("<span class='glyphicon glyphicon-thumbs-up' aria-hidden='true'>0</span>");
 
 		out.println("<span class='glyphicon glyphicon-thumbs-down' aria-hidden='true'>1</span>");
@@ -107,13 +111,16 @@ public class boardListServlet extends GenericServlet {
 
 		out.println("<span class='glyphicon glyphicon-user' aria-hidden='true'>0</span>");
 
-		out.println("<td></tr>");
-
-		out.println("</section>");
+		out.println("</td></tr>");
+		
+		out.println("</table>");
+		
 		out.println("</br>");
-		
+		out.println("</br>");
+
 		}
-		
+
+		out.println("</section >");
 		
 		out.println("	<header>aaaaaaaaaa</header>");
 		out.println("	<footer>ddddddd 좋아요순 정렬 싫어요순 정렬 </footer>");
